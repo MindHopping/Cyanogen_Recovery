@@ -338,15 +338,6 @@ really_install_package(const char *path, bool* wipe_cache, bool needs_mount)
     }
     signal(SIGBUS, SIG_DFL);
 
-    free(loadedKeys);
-    LOGI("verify_file returned %d\n", err);
-    if (err != VERIFY_SUCCESS) {
-        LOGE("signature verification failed\n");
-        sysReleaseMap(&map);
-        ret = INSTALL_CORRUPT;
-        goto out;
-    }
-
     /* Try to open the package.
      */
     ZipArchive zip;
